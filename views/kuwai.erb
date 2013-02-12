@@ -1,24 +1,17 @@
 <h1>kuwai</h1>
 
-<textarea id="urltext" rows=5 cols=30>http://kuwai.herokuapp.com/test/json</textarea>
-<input type="button" id="btn" onClick='$("#tbl").empty();callWebAPI()' value='GO!'>
+<input type="text" id="item0" value="list">
+<input type="text" id="item1" value="Good Company">
+<input type="text" id="item2" value="2013-01">
+<input type="button" id="btn" onClick='$("#tbl").empty();call()' value='GO!'>
 <table id="tbl"></table>
 
 <script>
-	function callWebAPI(){
-		$.ajax({
-			type:"GET",
-			url:$('#urltext').val(),
-			dataType:"jsonp",
-			jsonpCallback:"pad",
-			contentType:"application/json",
-			success:function(result){
-				console.log("callWebAPI-Success");
-				NAVerticalTable.build($('#tbl'), result);
-			},
-			error:function(){
-				console.log("callWebAPI-Error");
-			}
-		});
-	};	
+	function call(){
+    //NAAjax2.ajax(["list", "Good Company", "2013-01"],
+    NAAjax2.ajax([$('#item0').val(), $('#item1').val(), $('#item2').val()],
+      function(r){NAVerticalTable.build($('#tbl'),r);},
+      function(r){console.log(r);alert("AjaxError,See consolel.");}
+    );
+  }
 </script>
