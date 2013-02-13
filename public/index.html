@@ -71,6 +71,7 @@
       $(function(){
         $("#sign_in").focus();
         ios_safari_hide_url_bar();
+        NAKey.setTabstops($("#content"));
         NAKey.setTabstopForEscKey($("#page_selector"));
         NAKey.setEnterkeyMode(3);
         NALocalizer.loadMapFromServer();
