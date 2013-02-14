@@ -7,8 +7,8 @@ var NAAjax2 = function(){
 	// --------------------------------------------
 	// Private members
 	// --------------------------------------------
-	//var ROOT = "http://kuwai.herokuapp.com/";
-	var ROOT = "http://localhost:4567/";
+	var ROOT_CANDIDATE = ["http://kuwai.herokuapp.com/", "http://localhost:4567/"];
+	var ROOT = ROOT_CANDIDATE[0];
 	var who = [];
 	var http_client_uuid = "not yet initialized";
 	$(function(){http_client_uuid=uuid.v4();});
@@ -87,8 +87,20 @@ var NAAjax2 = function(){
                 NASlide.slide("WAIT",id);
               }
             });
+        },
+        
+        root: function(){
+            console.log("root is," + ROOT);
+        },
+        
+        root_switch: function(){
+            if(ROOT == ROOT_CANDIDATE[0])
+                ROOT = ROOT_CANDIDATE[1];
+            else
+                ROOT = ROOT_CANDIDATE[0];
+            this.root();
         }
-
+        
 	}
 }();
 
