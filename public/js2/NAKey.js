@@ -29,7 +29,7 @@ var NAKey = function(){
 				var idxWillFocus = idx + direction;
 				if(idxWillFocus < 0) idxWillFocus = lastIdx;
 				if(lastIdx < idxWillFocus) idxWillFocus = 0;
-				tabstops[idxWillFocus][0].focus();
+				tabstops[idxWillFocus].focus();
 				hit = true;
 				return false; // like 'break'.
 			}
@@ -129,10 +129,15 @@ var NAKey = function(){
 		// Public function
 		setTabstops: function(root/*jqObject*/){
 			tabstops = [];
-			root.find("input,textarea,select,button,a").each(function(){
+			root.find("input:visible,textarea:visible,select:visible,button:visible,a:visible").each(function(){
 				/*if(isInputType($(this).type)) */tabstops.push($(this));
 			});
 			console.log("tabstops.length is [" + tabstops.length + "].");
+			console.log(tabstops);
+		},
+		setTabstopsAndFocus1st: function(root/*jqObject*/){ // NOT WORK ! ......
+		    this.setTabstops(root);
+	        tabstops[0].focus();
 		},
 		setTabstopForEscKey: function(jq){
 			tabstopForEscKey = jq;

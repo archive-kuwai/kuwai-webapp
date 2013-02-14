@@ -58,7 +58,6 @@ var NAAjax2 = function(){
 				success:function(result){
 					console.log("/--- Ajax Success");console.log(result);console.log("---/");
 					success_funciton(result, ajax_id);
-					console.log(this);
 					that.ajaxHistory_OK(ajax_id);
 				},
 				error:function(error){
@@ -77,9 +76,9 @@ var NAAjax2 = function(){
               url: "page/" + page_name,
               dataType:"html",
               success:function(result){
-                console.log(result);
                 ELEMENT.html(result);
                 NASlide.slide("WAIT",id);
+                NAKey.setTabstops(ELEMENT);
               },
               error:function(result){
                 console.log("Error: NALoadPage.js - load()");

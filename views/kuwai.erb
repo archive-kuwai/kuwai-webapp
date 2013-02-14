@@ -8,10 +8,16 @@
 
 <script>
 	function call(){
-    //NAAjax2.ajax(["list", "Good Company", "2013-01"],
     NAAjax2.ajax([$('#item0').val(), $('#item1').val(), $('#item2').val()],
-      function(r){NAVerticalTable.build($('#tbl'),r);},
-      function(r){console.log(r);alert("AjaxError,See consolel.");}
+      function(result){NAVerticalTableForDynamo.build($('#tbl'),result);},
+      function(error){console.log(error);alert("AjaxError, See console.");}
+    );
+  }
+  function func_on_click(hash,range){
+    NAAjax2.ajax(
+      ["one",hash,range],
+      function(result){NAVerticalTable.build($('#tbl'),result);},
+      function(error){console.log(error);alert("AjaxError, See console.");}
     );
   }
 </script>

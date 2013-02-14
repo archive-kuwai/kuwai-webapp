@@ -8,7 +8,7 @@ var NAVerticalTable = function(){
 	// Private members
 	// --------------------------------------------
 	var tr = function(data){return "<tr>" + data + "</tr>";};
-	var td1 = function(data){return "<td>" + data + "</td>";};
+	var td1 = function(data){return "<td class='small'>" + data + "</td>";};
 	var td2 = function(data){return "<td align='left' style='width:100%;word-break:break-all;'>" + data + "</td>";};
 
 	var dig = function(s/*string*/,o/*object*/,parentkey){
