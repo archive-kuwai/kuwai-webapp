@@ -7,7 +7,7 @@ var NAAjax2 = function(){
 	// --------------------------------------------
 	// Private members
 	// --------------------------------------------
-	var ROOT_CANDIDATE = ["http://kuwai.herokuapp.com/", "http://localhost:4567/"];
+	var ROOT_CANDIDATE = ["http://kuwai.elasticbeanstalk.com/", "http://localhost:4567/"];
 	var ROOT = ROOT_CANDIDATE[0];
 	var who = [];
 	var http_client_uuid = "not yet initialized";
