@@ -79,7 +79,6 @@ var NAAjax2 = function(){
               success:function(result){
                 ELEMENT.html(result);
                 NASlide.slide("WAIT",id);
-                NAKey.setTabstops(ELEMENT);
               },
               error:function(result){
                 console.log("Error: NALoadPage.js - load()");

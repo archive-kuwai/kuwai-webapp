@@ -12,16 +12,19 @@ var NASlide = function(){
 	// Public members
 	// --------------------------------------------
 	return{
-        slide: function(id0,id1){
+        slide: function(id0,id1,complete){
+            if(complete == null)
+                var complete = function(){NAKey.setTabstops($("#"+id1));}
+            
             if(id0 == "WAIT")
               $("#"+id0).hide();
             else
-              $("#"+id0).hide("slide",{direction:"right"},"fast");
+              $("#"+id0).hide("slide",{direction:"right"},"fast",complete);
             
             if(id1 == "WAIT")
               $("#"+id1).show();
             else
-              $("#"+id1).show("slide",{direction:"left"},"normal");
+              $("#"+id1).show("slide",{direction:"left"},"normal",complete);
           }
     };
 }();

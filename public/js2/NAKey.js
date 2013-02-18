@@ -130,14 +130,11 @@ var NAKey = function(){
 		setTabstops: function(root/*jqObject*/){
 			tabstops = [];
 			root.find("input:visible,textarea:visible,select:visible,button:visible,a:visible").each(function(){
-				/*if(isInputType($(this).type)) */tabstops.push($(this));
+				/*if(isInputType($(this).type)) */ tabstops.push($(this));
 			});
 			console.log("tabstops.length is [" + tabstops.length + "].");
 			console.log(tabstops);
-		},
-		setTabstopsAndFocus1st: function(root/*jqObject*/){ // NOT WORK ! ......
-		    this.setTabstops(root);
-	        tabstops[0].focus();
+            if(tabstops.length >= 1) tabstops[0].focus();
 		},
 		setTabstopForEscKey: function(jq){
 			tabstopForEscKey = jq;
