@@ -7,8 +7,9 @@ var NAAjax2 = function(){
 	// --------------------------------------------
 	// Private members
 	// --------------------------------------------
-	var ROOT_CANDIDATE = ["http://kuwai.elasticbeanstalk.com/", "http://localhost:4567/"];
-	var ROOT = ROOT_CANDIDATE[0];
+	var KUWAI_CANDIDATES = ["http://kuwai.elasticbeanstalk.com/", "http://localhost:4567/", "http://kuwai.herokuapp.com/"];
+    var KUWAI_Index = 0;
+	var KUWAI = KUWAI_CANDIDATES[KUWAI_Index];
 	var who = [];
 	var http_client_uuid = "not yet initialized";
 	$(function(){http_client_uuid=uuid.v4();});
@@ -49,7 +50,7 @@ var NAAjax2 = function(){
             
             var asking = {"method":method_array, "who":who};
             var asking_json = JSON.stringify(asking);
-            var url = ROOT + "api/" + asking_json.length + "/" + asking_json;
+            var url = KUWAI + "api/" + asking_json.length + "/" + asking_json;
             
 			var that = this; $.ajax({
 				type:"post",
@@ -89,18 +90,25 @@ var NAAjax2 = function(){
             });
         },
         
-        root: function(){
-            console.log("root is," + ROOT);
+        kuwai: function(){
+            console.log("kuwai_candidates are," + KUWAI_CANDIDATES);
+            console.log("Now kuwai is," + KUWAI);
         },
         
-        root_switch: function(){
-            if(ROOT == ROOT_CANDIDATE[0])
-                ROOT = ROOT_CANDIDATE[1];
+        kuwai_switch: function(){
+            if(KUWAI_Index >= KUWAI_CANDIDATES.length -1) 
+                KUWAI_Index = 0;
             else
-                ROOT = ROOT_CANDIDATE[0];
-            this.root();
-        }
+                KUWAI_Index++;
+            KUWAI = KUWAI_CANDIDATES[KUWAI_Index];
+            this.kuwai();
+        },
         
+        kuwai_set: function(s){
+            KUWAI_CANDIDATES.push(s);
+        }
 	}
 }();
+
+NAAjax2.kuwai();
 
