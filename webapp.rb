@@ -23,5 +23,6 @@ get '/list_pages' do
     page[0,prefix.size] = ''
     page.sub!(/\.erb/,"")
   end
+  pages.sort!
   pages.to_json
 end
