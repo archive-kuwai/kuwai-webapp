@@ -81,10 +81,27 @@ var NAAjax2 = function(){
                 NASlide.slide("WAIT",id);
               },
               error:function(result){
-                console.log("Error: NALoadPage.js - load()");
+                console.log("Error: NALoadPage.js - load_page()");
                 console.log(result);
                 ELEMENT.html("<h3>ページを読みこんでいる際にエラーが起きました。<br>お手数ですが、もう一度操作を試していただけますか？</h3>");
                 NASlide.slide("WAIT",id);
+              }
+            });
+        },
+        
+        list_pages: function(success_function){
+            $.ajax({
+              type:"GET",
+              url: "list_pages",
+              dataType:"json",
+              success:function(result){
+                console.log(result);
+                success_function(result);
+              },
+              error:function(result){
+                console.log("Error: NALoadPage.js - list_pages()");
+                console.log(result);
+                // TODO MUST RETRY, and show error.
               }
             });
         },

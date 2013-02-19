@@ -1,0 +1,22 @@
+<h1>kuwai へ ようこそ！</h1>
+<h5>
+  こんにちは。<br>
+  左上の「ページセレクター」で表示したいページを選んでください。
+</h5>
+
+<script>
+  (function build_page_selector(){
+    NAAjax2.list_pages(function(returned_result){
+      var pages = ["special/page_selector"].concat(returned_result); // Concat arrays.
+      var alias = pages.concat(); // Returns copied array.
+      alias[0]="0.ようこそ";
+      console.log(pages)
+      $("#page_selector").removeClass("hidden");
+      $("#page_selector").empty();
+      for(var i=0; i<pages.length; i++){
+        $('#page_selector').append("<option value='" +pages[i]+ "' id='" +pages[i]+ "'>" + alias[i] + "</option>");
+      }
+      $("#page_selector").focus();
+    });
+  })();
+</script>
