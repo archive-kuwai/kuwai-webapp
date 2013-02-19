@@ -1,0 +1,21 @@
+<h1> ya </h1>
+
+<div>
+  <div>テンプレート2<select id="template_selector"></div>
+  <input type="button" id="btn" onClick="" value='新規作成する'>
+</div>
+
+<script>
+  $(function(){
+    // TODO Rewrite setOptionsToSelect to YUI style.
+    
+    NAAjax2.ajax(["templates","Good Company"], function(result){
+      var titles = result;
+      setOptionsToSelect($('#template_selector'), titles, titles);
+    },null);
+  });
+  
+  function create(){
+  
+  }
+</script>
