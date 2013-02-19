@@ -1,6 +1,6 @@
 #coding:utf-8
 require 'sinatra'
-
+require 'json'
 
 before do
   content_type:html
@@ -17,7 +17,6 @@ end
 
 get '/list_pages' do
   content_type:json
-  require 'json'
   prefix = "./views/"
   pages = Dir.glob("#{prefix}*.erb")
   pages.each do |page|
